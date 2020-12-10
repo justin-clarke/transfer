@@ -50,10 +50,10 @@ if __name__ == "__main__":
         level += 1
 
     
-    with open("novelty37_200_noisy_groundtruths_100samples_v0411.txt", 'w') as f:
+    with open("non-novel_200_noisy_groundtruths_100samples_v041_aws.txt", 'w') as f:
         json.dump(noisy_ground_truths, f)
 
-    with open("novelty37_200_non-noisy_groundtruths_v0411.txt", 'w') as f2:
+    with open("non-novel_200_non-noisy_groundtruths_v041_aws.txt", 'w') as f2:
         json.dump(ground_truths, f2)
 
 
