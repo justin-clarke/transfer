@@ -39,20 +39,21 @@ if __name__ == "__main__":
     noisy_ground_truths = []
 
     level = 0
-    while level < 80:
+    while level < 160:
         print("Loading level: " + str(level))
         ar.load_next_available_level()
         sleep(1.75)
-        ground_truths.append(ar.get_ground_truth_without_screenshot()[0])
-        for sample in range(100):
-            noisy_ground_truths.append(ar.get_noisy_ground_truth_without_screenshot()[0])
+        if level > 80:
+            ground_truths.append(ar.get_ground_truth_without_screenshot()[0])
+            for sample in range(100):
+                noisy_ground_truths.append(ar.get_noisy_ground_truth_without_screenshot()[0])
         level += 1
 
     
-    with open("non-novel_noisy_groundtruths_0-80_100samples_v041_aws.txt", 'w') as f:
+    with open("non-novel_noisy_groundtruths_80-159_100samples_v041_aws.txt", 'w') as f:
         json.dump(noisy_ground_truths, f)
 
-    with open("non-novel_non-noisy_groundtruths_0-80_v041_aws.txt", 'w') as f2:
+    with open("non-novel_non-noisy_groundtruths_80-159_v041_aws.txt", 'w') as f2:
         json.dump(ground_truths, f2)
 
 
