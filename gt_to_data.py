@@ -4,7 +4,7 @@ from gt_update import *
 from get_data import *
 
 print("Reading data")
-f = open("non-novel_noisy_groundtruths_80-159_100samples_v041_aws.txt")
+f = open("non-novel_noisy_groundtruths_0-80_100samples_v041_aws.txt")
 gt_list = json.load(f)
 data = []
 gt_count = 0
@@ -17,7 +17,7 @@ for gt in gt_list:
 	data.extend(d)
 
 print("Writing data")
-with open("non-novel_80-159_100samples_v041_aws.txt", 'w') as f:
+with open("non-novel_0-80_100samples_v041_aws.txt", 'w') as f:
         for i in data:
         	f.write(str(i) + '\n')
 
