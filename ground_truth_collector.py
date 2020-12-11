@@ -39,7 +39,7 @@ if __name__ == "__main__":
     noisy_ground_truths = []
 
     level = 0
-    while level < 200:
+    while level < 80:
         print("Loading level: " + str(level))
         ar.load_next_available_level()
         sleep(1.75)
@@ -49,10 +49,10 @@ if __name__ == "__main__":
         level += 1
 
     
-    with open("non-novel_200_noisy_groundtruths_100samples_v041_aws.txt", 'w') as f:
+    with open("non-novel_noisy_groundtruths_0-80_100samples_v041_aws.txt", 'w') as f:
         json.dump(noisy_ground_truths, f)
 
-    with open("non-novel_200_non-noisy_groundtruths_v041_aws.txt", 'w') as f2:
+    with open("non-novel_non-noisy_groundtruths_0-80_v041_aws.txt", 'w') as f2:
         json.dump(ground_truths, f2)
 
 
