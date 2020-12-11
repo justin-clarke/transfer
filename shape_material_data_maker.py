@@ -9,7 +9,7 @@ materials = []
 shapes = []
 material_data = []
 shape_data = []
-f = open("non-novel_200levels_100samples_v0411.txt")
+f = open("non-novel_200levels_100samples_v041_aws.txt")
 line_count = 0
 for iline in f:
 	line_count += 1
