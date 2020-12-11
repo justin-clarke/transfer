@@ -40,8 +40,7 @@ if __name__ == "__main__":
 
     level = 0
     while level < 200:
-        if level % 25 == 0:
-            print("Loading level: " + str(level))
+        print("Loading level: " + str(level))
         ar.load_next_available_level()
         sleep(1.75)
         ground_truths.append(ar.get_ground_truth_without_screenshot()[0])
