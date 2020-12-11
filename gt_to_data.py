@@ -7,7 +7,11 @@ print("Reading data")
 f = open("non-novel_noisy_groundtruths_80-159_100samples_v041_aws.txt")
 gt_list = json.load(f)
 data = []
+gt_count = 0
 for gt in gt_list:
+	gt_count += 1
+	if gt_count % 1000:
+		print("Processing gt: " + str(gt_count))
 	gt_update(gt)
 	d = get_data(gt)
 	data.extend(d)
