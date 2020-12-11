@@ -1,5 +1,5 @@
 # SAIL-ON object classifier training 
-# Version 0.4.1.1
+# Version 0.4.1
 
 import sklearn
 # from sklearn import utils
@@ -34,18 +34,18 @@ def _predict_proba_lr_hotpatch(self, X):
 # hotpatch to stop normalization of class probabilities
 sklearn.linear_model._base.LinearClassifierMixin._predict_proba_lr = _predict_proba_lr_hotpatch
 
-model_save_name = "model_lbfgs_v041_aws.sav"
+model_save_name = "model_lbfgs_v041_aws_trained.sav"
 print_errors = 1
 
 
-print("Reading Data 1")
+print("Reading Data")
 data = [] 
 labels = []
-f = open("non-novel_200levels_100samples_v0411.txt")
+f = open("non-novel_200levels_100samples_v041_aws.txt")
 line_count = 0
-for iline in f:
-# while line_count <= 5000:
-# 	iline = f.readline()
+# for iline in f:
+while line_count <= 5000:
+	iline = f.readline()
 	line_count += 1
 	if line_count % 250000 == 0:
 		print("Reading line: " + str(line_count))
@@ -53,43 +53,12 @@ for iline in f:
 	data.append(l[:-1])
 	labels.append(l[-1])
 f.close()
-
-
-print("Reading Data 2")
-f = open("non-novel_200levels_100samples_v0411.txt")
-line_count = 0
-for iline in f:
-# while line_count <= 5000:
-# 	iline = f.readline()
-	line_count += 1
-	if line_count % 250000 == 0:
-		print("Reading line: " + str(line_count))
-	l = eval(iline.strip())
-	data.append(l[:-1])
-	labels.append(l[-1])
-f.close()
-
-
-print("Reading Data 3")
-f = open("non-novel_200levels_100samples_v0411.txt")
-line_count = 0
-for iline in f:
-# while line_count <= 5000:
-# 	iline = f.readline()
-	line_count += 1
-	if line_count % 250000 == 0:
-		print("Reading line: " + str(line_count))
-	l = eval(iline.strip())
-	data.append(l[:-1])
-	labels.append(l[-1])
-f.close()
-
 
 
 
 print("Total data size: " + str(len(data)))
 
-num_test_points = int(len(data)*0.075)
+num_test_points = int(len(data)*0.05)
 print("Selecting " + str(num_test_points) + " test data points")
 test_indices = []
 while len(test_indices) < num_test_points:
@@ -124,21 +93,6 @@ while data_idx < len(data):
 	else:
 		data_idx += 1
 
-
-
-	# if  data_idx != test_index_val:
-	# 	train_data.append(data[data_idx])
-	# 	train_labels.append(labels[data_idx])
-	# 	data_idx += 1
-	# else:
-	# 	data_idx += 1
-	# 	if test_idxs_idx == len(test_indices) - 1:
-	# 		train_data.extend(data[data_idx:])
-	# 		train_labels.extend(labels[data_idx:])
-	# 		data_idx = len(data)
-	# 	else:
-	# 		test_idxs_idx += 1
-	# 		test_index_val = test_indices[test_idxs_idx]
 
 print("Train data size: " + str(len(train_data)))
 print("Train label size: " + str(len(train_labels)))
