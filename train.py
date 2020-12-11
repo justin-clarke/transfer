@@ -43,9 +43,9 @@ data = []
 labels = []
 f = open("non-novel_200levels_100samples_v041_aws.txt")
 line_count = 0
-# for iline in f:
-while line_count <= 5000:
-	iline = f.readline()
+for iline in f:
+# while line_count <= 5000:
+# 	iline = f.readline()
 	line_count += 1
 	if line_count % 250000 == 0:
 		print("Reading line: " + str(line_count))
