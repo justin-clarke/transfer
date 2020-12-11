@@ -34,11 +34,11 @@ def _predict_proba_lr_hotpatch(self, X):
 # hotpatch to stop normalization of class probabilities
 sklearn.linear_model._base.LinearClassifierMixin._predict_proba_lr = _predict_proba_lr_hotpatch
 
-model_save_name = "model_lbfgs_v0411.sav"
+model_save_name = "model_lbfgs_v041_aws.sav"
 print_errors = 1
 
 
-print("Reading Data")
+print("Reading Data 1")
 data = [] 
 labels = []
 f = open("non-novel_200levels_100samples_v0411.txt")
@@ -53,6 +53,37 @@ for iline in f:
 	data.append(l[:-1])
 	labels.append(l[-1])
 f.close()
+
+
+print("Reading Data 2")
+f = open("non-novel_200levels_100samples_v0411.txt")
+line_count = 0
+for iline in f:
+# while line_count <= 5000:
+# 	iline = f.readline()
+	line_count += 1
+	if line_count % 250000 == 0:
+		print("Reading line: " + str(line_count))
+	l = eval(iline.strip())
+	data.append(l[:-1])
+	labels.append(l[-1])
+f.close()
+
+
+print("Reading Data 3")
+f = open("non-novel_200levels_100samples_v0411.txt")
+line_count = 0
+for iline in f:
+# while line_count <= 5000:
+# 	iline = f.readline()
+	line_count += 1
+	if line_count % 250000 == 0:
+		print("Reading line: " + str(line_count))
+	l = eval(iline.strip())
+	data.append(l[:-1])
+	labels.append(l[-1])
+f.close()
+
 
 
 
