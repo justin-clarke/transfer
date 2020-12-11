@@ -10,7 +10,7 @@ data = []
 gt_count = 0
 for gt in gt_list:
 	gt_count += 1
-	if gt_count % 1000:
+	if gt_count % 100:
 		print("Processing gt: " + str(gt_count))
 	gt_update(gt)
 	d = get_data(gt)
