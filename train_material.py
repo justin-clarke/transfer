@@ -34,7 +34,7 @@ def _predict_proba_lr_hotpatch(self, X):
 # hotpatch to stop normalization of class probabilities
 sklearn.linear_model._base.LinearClassifierMixin._predict_proba_lr = _predict_proba_lr_hotpatch
 
-model_save_name = "model_lbfgs_v0411_material.sav"
+model_save_name = "model_lbfgs_v041_aws_trained_material.sav"
 print_errors = 0
 
 print("Reading Data")
@@ -54,7 +54,7 @@ for iline in f:
 	labels.append(l[-1])
 f.close()
 
-test_case_count = int(len(data) * 0.075)
+test_case_count = int(len(data) * 0.05)
 
 train_data = data[:-test_case_count]
 train_labels = labels[:-test_case_count]
