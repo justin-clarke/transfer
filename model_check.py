@@ -36,7 +36,7 @@ sklearn.linear_model._base.LinearClassifierMixin._predict_proba_lr = _predict_pr
 print("Reading data")
 data = []
 labels = []
-f = open("material_data.txt")
+f = open("shape_data.txt")
 line_count = 0
 for iline in f:
 	line_count += 1
@@ -52,7 +52,7 @@ print("len(data): " + str(len(data)))
 # data = data[-200000:]
 # labels = labels[-200000:]
 
-model_name = 'model_lbfgs_v0411_material.sav'
+model_name = 'model_lbfgs_v041_aws_trained_shape.sav'
 
 print("Loading model")
 model = pickle.load(open(model_name, 'rb'))
